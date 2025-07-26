@@ -9,9 +9,8 @@ url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
-
 class ToDo(BaseModel):
-    id: Optional[int] = None  
+    id: Optional[int] = None
     title: str
     description: Optional[str] = None
     completed: bool = False
