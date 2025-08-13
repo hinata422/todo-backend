@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
-from auth import signup_user, login_user, AuthRequest
-from auth import router as auth_router
+from auth_routes import signup_user, login_user, AuthRequest
+from auth_routes import router as auth_router
 
 app = FastAPI()
 
