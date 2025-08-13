@@ -1,9 +1,14 @@
 from supabase import create_client, Client
 from typing import Optional, List
 from pydantic import BaseModel
-from fastapi import HTTPException
+from fastapi import FastAPI, HTTPException
+from dotenv import load_dotenv
+
 import os
 
+load_dotenv()
+
+app = FastAPI()
 
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")

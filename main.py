@@ -1,10 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
+from auth_routes import signup_user, login_user, AuthRequest
+from auth_routes import router as auth_router
 
 app = FastAPI()
 
 todos: List["ToDo"] = []
+
+app.include_router(auth_router)
 
 class ToDo(BaseModel):
     id: int
@@ -41,3 +45,11 @@ def delete_todo(todo_id: int):
             deleted_todo = todos.pop(i)
             return {"message": "タスクを削除しました", "todo": deleted_todo}
     raise HTTPException(status_code=404, detail="タスクが見つかりません")
+
+@app.post("/signup")
+def signup(auth: AuthRequest):
+    return signup_user(auth)
+
+@app.post("/login")
+def login(auth: AuthRequest):
+    return login_user(auth)
