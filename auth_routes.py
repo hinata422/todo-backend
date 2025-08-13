@@ -14,7 +14,7 @@ class AuthRequest(BaseModel):
     password: str
 
 @router.post("/signup")
-def signup(auth: AuthRequest):
+def signup_user(auth: AuthRequest):
     result = supabase.auth.sign_up({
         "email": auth.email,
         "password": auth.password
@@ -24,7 +24,7 @@ def signup(auth: AuthRequest):
     return result
 
 @router.post("/login")
-def login(auth: AuthRequest):
+def login_user(auth: AuthRequest):
     result = supabase.auth.sign_in_with_password({
         "email": auth.email,
         "password": auth.password
