@@ -2,7 +2,9 @@ from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 from supabase_client import supabase
 from dotenv import load_dotenv
+
 router = APIRouter()
+
 load_dotenv()
 
 app = FastAPI()
